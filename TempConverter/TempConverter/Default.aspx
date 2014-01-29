@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TempConverter.Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="TempConverter.Default" ViewStateMode="Disabled" %>
 
 <!DOCTYPE html>
 
@@ -27,6 +27,8 @@
 
         <label for="FahrToCelRadio">Fahrenheit till Celsius:</label>
         <asp:RadioButton ID="FahrToCelRadio" GroupName="ConvertType" runat="server" />
+
+        <asp:Button ID="ConvertButton" runat="server" Text="Konvertera" OnClick="ConvertButton_Click" />
     
     </div>
     </form>
