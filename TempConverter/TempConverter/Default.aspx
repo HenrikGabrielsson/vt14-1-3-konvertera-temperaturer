@@ -28,7 +28,7 @@
         <%-- Validering --%>
         <asp:RequiredFieldValidator ID="RequiredFieldValidatorEnd" runat="server" ErrorMessage="Du måste fylla i Sluttemperatur." Display="Dynamic" Text="*" ControlToValidate="EndTempTextBox"></asp:RequiredFieldValidator>
         <asp:CompareValidator ID="CompareValidatorEnd" runat="server" ErrorMessage="Sluttemperaturen kunde inte tolkas som ett heltal." Display="Dynamic" Text="*" ControlToValidate="EndTempTextBox" Operator="DataTypeCheck" Type="Integer"></asp:CompareValidator>
-        <asp:CompareValidator ID="CompareValidatorEnd2" runat="server" ErrorMessage="Sluttemperaturen måste vara högre än Starttemperaturen." Display="Dynamic" Text="*" ControlToValidate="EndTempTextBox" ControlToCompare="StartTempTextBox" Operator="GreaterThan"></asp:CompareValidator>
+        <asp:CompareValidator ID="CompareValidatorEnd2" runat="server" ErrorMessage="Sluttemperaturen måste vara högre än Starttemperaturen." Display="Dynamic" Text="*" ControlToValidate="EndTempTextBox" ControlToCompare="StartTempTextBox" Operator="GreaterThan" Type="Integer"></asp:CompareValidator>
 
 
         <%-- Input - Steg --%>
