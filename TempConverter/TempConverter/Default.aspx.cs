@@ -23,6 +23,31 @@ namespace TempConverter
                 int endTemp = int.Parse(EndTempTextBox.Text);
                 int stepTemp = int.Parse(TempStepTextBox.Text);
 
+                //Tabellhuvud 
+                TableHeaderRow theader = new TableHeaderRow();
+                TempTable.Rows.Add(theader);
+
+                TableHeaderCell th = new TableHeaderCell();
+                theader.Cells.Add(th);
+
+                if(CeltoFahrRadio.Checked)
+                {
+                    th.Text = "Celsius";
+                    
+                    th = new TableHeaderCell();
+                    theader.Cells.Add(th);
+                    th.Text = "Fahrenheit";
+                }
+                else
+                {
+                    th.Text = "Fahrenheit";
+
+                    th = new TableHeaderCell();
+                    theader.Cells.Add(th);
+                    th.Text = "Celsius";
+                }
+
+
                 //Loopen skriver ut temperaturerna i tabellen tills temperaturen har nått sluttemperaturen
                 //i ökar med stegen som användaren angav
                 for (int i = startTemp; i <= endTemp; i += stepTemp)
