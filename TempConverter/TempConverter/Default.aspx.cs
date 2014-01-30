@@ -17,66 +17,68 @@ namespace TempConverter
 
         protected void ConvertButton_Click(object sender, EventArgs e)
         {
-            int startTemp = int.Parse(StartTempTextBox.Text);
-            int endTemp = int.Parse(EndTempTextBox.Text);
-            int stepTemp = int.Parse(TempStepTextBox.Text);
-
-            //Loopen skriver ut temperaturerna i tabellen tills temperaturen har nått sluttemperaturen
-            //i ökar med stegen som användaren angav
-            for (int i = startTemp; i <= endTemp; i+= stepTemp)
+            if (IsValid)
             {
-                //ny rad i tabellen
-                TableRow tr = new TableRow();
-                TempTable.Rows.Add(tr);
+                int startTemp = int.Parse(StartTempTextBox.Text);
+                int endTemp = int.Parse(EndTempTextBox.Text);
+                int stepTemp = int.Parse(TempStepTextBox.Text);
 
-                //cell 1 i raden med den okonverterade temperaturen.
-                TableCell td = new TableCell();
-                tr.Cells.Add(td);
-                td.Text = String.Format("{0}",i);
-
-                //cell 2 i raden med den konverterade temperaturen.
-                td = new TableCell();
-                tr.Cells.Add(td);
-
-                //kollar vad användaren vill konvertera till/från och anropar lämplig metod för att fylla cellen.
-                if(CeltoFahrRadio.Checked)
+                //Loopen skriver ut temperaturerna i tabellen tills temperaturen har nått sluttemperaturen
+                //i ökar med stegen som användaren angav
+                for (int i = startTemp; i <= endTemp; i += stepTemp)
                 {
-                    td.Text = String.Format("{0}",TemperatureConverter.CelsiusToFahrenheit(i));
-                }
-
-                else
-                {
-                    td.Text = String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(i));
-                }
-
-                //om den sista temperaturen inte kommer med i tabellen så läggs den till här
-                if(i != endTemp && i + stepTemp > endTemp)
-                {
-                    tr = new TableRow();
+                    //ny rad i tabellen
+                    TableRow tr = new TableRow();
                     TempTable.Rows.Add(tr);
 
-                    td = new TableCell();
+                    //cell 1 i raden med den okonverterade temperaturen.
+                    TableCell td = new TableCell();
                     tr.Cells.Add(td);
-                    td.Text = String.Format("{0}", endTemp);
+                    td.Text = String.Format("{0}", i);
 
+                    //cell 2 i raden med den konverterade temperaturen.
                     td = new TableCell();
                     tr.Cells.Add(td);
+
+                    //kollar vad användaren vill konvertera till/från och anropar lämplig metod för att fylla cellen.
                     if (CeltoFahrRadio.Checked)
                     {
-                        td.Text = String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(endTemp));
+                        td.Text = String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(i));
                     }
 
                     else
                     {
-                        td.Text = String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(endTemp));
+                        td.Text = String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(i));
                     }
 
-                }
-            }
+                    //om den sista temperaturen inte kommer med i tabellen så läggs den till här
+                    if (i != endTemp && i + stepTemp > endTemp)
+                    {
+                        tr = new TableRow();
+                        TempTable.Rows.Add(tr);
 
-            //visa tabell
-            TempTable.Visible = true;
-            
+                        td = new TableCell();
+                        tr.Cells.Add(td);
+                        td.Text = String.Format("{0}", endTemp);
+
+                        td = new TableCell();
+                        tr.Cells.Add(td);
+                        if (CeltoFahrRadio.Checked)
+                        {
+                            td.Text = String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(endTemp));
+                        }
+
+                        else
+                        {
+                            td.Text = String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(endTemp));
+                        }
+
+                    }
+                }
+
+                //visa tabell
+                TempTable.Visible = true;
+            }    
         }
     }
 }
