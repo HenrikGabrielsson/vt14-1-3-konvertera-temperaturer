@@ -32,5 +32,11 @@
     
     </div>
     </form>
+
+
+
+    <%-- Tabellen som ska fyllas på med temperaturer --%>
+    <asp:Table ID="TempTable" runat="server" Visible="false"></asp:Table>
+
 </body>
 </html>
