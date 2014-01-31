@@ -32,19 +32,19 @@ namespace TempConverter
 
                 if(CeltoFahrRadio.Checked)
                 {
-                    th.Text = "Celsius";
+                    th.Text = " &deg;C";
                     
                     th = new TableHeaderCell();
                     theader.Cells.Add(th);
-                    th.Text = "Fahrenheit";
+                    th.Text = " &deg;F";
                 }
                 else
                 {
-                    th.Text = "Fahrenheit";
+                    th.Text = " &deg;F";
 
                     th = new TableHeaderCell();
                     theader.Cells.Add(th);
-                    th.Text = "Celsius";
+                    th.Text = " &deg;C";
                 }
 
 
