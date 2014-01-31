@@ -47,7 +47,7 @@ namespace TempConverter
                     //cell 1 i raden med den okonverterade temperaturen.
                     TableCell td = new TableCell();
                     tr.Cells.Add(td);
-                    td.Text = String.Format("{0}", i);
+                    td.Text = i.ToString();
 
                     //cell 2 i raden med den konverterade temperaturen.
                     td = new TableCell();
