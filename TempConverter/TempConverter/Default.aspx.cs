@@ -29,27 +29,15 @@ namespace TempConverter
 
                 TableHeaderCell th = new TableHeaderCell();
                 theader.Cells.Add(th);
-
-                if(CeltoFahrRadio.Checked)
-                {
-                    th.Text = " &deg;C";
+                th.Text = CeltoFahrRadio.Checked? " &deg;C": "&deg;F";
                     
-                    th = new TableHeaderCell();
-                    theader.Cells.Add(th);
-                    th.Text = " &deg;F";
-                }
-                else
-                {
-                    th.Text = " &deg;F";
-
-                    th = new TableHeaderCell();
-                    theader.Cells.Add(th);
-                    th.Text = " &deg;C";
-                }
-
+                th = new TableHeaderCell();
+                theader.Cells.Add(th);
+                th.Text = CeltoFahrRadio.Checked ? " &deg;F" : "&deg;C";
 
                 //Loopen skriver ut temperaturerna i tabellen tills temperaturen har nått sluttemperaturen
                 //i ökar med stegen som användaren angav
+
                 for (int i = startTemp; i <= endTemp; i += stepTemp)
                 {
                     //ny rad i tabellen
@@ -66,15 +54,8 @@ namespace TempConverter
                     tr.Cells.Add(td);
 
                     //kollar vad användaren vill konvertera till/från och anropar lämplig metod för att fylla cellen.
-                    if (CeltoFahrRadio.Checked)
-                    {
-                        td.Text = String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(i));
-                    }
 
-                    else
-                    {
-                        td.Text = String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(i));
-                    }
+                    td.Text = CeltoFahrRadio.Checked? String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(i)) : String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(i));
 
                     //om den sista temperaturen inte kommer med i tabellen så läggs den till här
                     if (i != endTemp && i + stepTemp > endTemp)
@@ -88,19 +69,10 @@ namespace TempConverter
 
                         td = new TableCell();
                         tr.Cells.Add(td);
-                        if (CeltoFahrRadio.Checked)
-                        {
-                            td.Text = String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(endTemp));
-                        }
 
-                        else
-                        {
-                            td.Text = String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(endTemp));
-                        }
-
+                        td.Text = CeltoFahrRadio.Checked?String.Format("{0}", TemperatureConverter.CelsiusToFahrenheit(endTemp)):String.Format("{0}", TemperatureConverter.FahrenheitToCelsius(endTemp));
                     }
                 }
-
                 //visa tabell
                 TempTable.Visible = true;
             }    
